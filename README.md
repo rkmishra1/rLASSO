@@ -1,6 +1,6 @@
 <div align="center">
 
-# rLASSO
+# rBLASSO
 
 ### Reciprocal Bayesian LASSO in R
 
