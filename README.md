@@ -30,7 +30,7 @@ For a linear model $y = X\beta + \epsilon$, $\epsilon \sim N(0, \sigma^2 I_n)$, 
 
 
 $$
-Q(\beta) = \min_\beta \; (y - X\beta)'(y - X\beta) + \lambda \sum_{j=1}^p \frac{1}{|\beta_j|} \, I\{\beta_j \neq 0\}
+Q(\beta) = \min_\beta \; (y - X\beta)'(y - X\beta) + \lambda \sum_{j=1}^p \frac{1}{|\beta_j|} \, I\lbrace\beta_j \neq 0\rbrace
 $$
 
 
@@ -42,7 +42,7 @@ The Bayesian counterpart places an **Inverse Laplace** prior on each $\beta_j$:
 
 
 $$
-\pi(\beta) = \prod_{j=1}^p \frac{\lambda}{2\beta_j^2} \exp\{ -\frac{\lambda}{|\beta_j|} \} I\{\beta_j \neq 0\}
+\pi(\beta) = \prod_{j=1}^p \frac{\lambda}{2\beta_j^2} \exp\lbrace -\frac{\lambda}{|\beta_j|} \rbrace I\lbrace\beta_j \neq 0\rbrace
 $$
 
 
@@ -52,7 +52,7 @@ To make posterior sampling tractable, the prior is decomposed as a scale mixture
 
 
 $$
-\beta_j \mid \tau_j, u_j, \sigma^2 \;\sim\; N\left(0,\, \sigma^2 \tau_j^2\right) I\{ |\beta_j| > \tfrac{\sigma}{u_j} \}
+\beta_j \mid \tau_j, u_j, \sigma^2 \;\sim\; N\left(0,\, \sigma^2 \tau_j^2\right) I\lbrace |\beta_j| > \tfrac{\sigma}{u_j} \rbrace
 $$
 
 
@@ -64,13 +64,13 @@ $$
 
 
 $$
-\zeta_j \mid u_j \;\sim\; \text{Gamma}\left( 2,\; \tfrac{|\beta_j|}{\sigma} + \tfrac{1}{u_j} \right), \qquad u_j \mid \lambda \;\sim\; \text{Exp}(\lambda)\, I\{ u_j > \tfrac{\sigma}{|\beta_j|} \}
+\zeta_j \mid u_j \;\sim\; \text{Gamma}\left( 2,\; \tfrac{|\beta_j|}{\sigma} + \tfrac{1}{u_j} \right), \qquad u_j \mid \lambda \;\sim\; \text{Exp}(\lambda)\, I\lbrace u_j > \tfrac{\sigma}{|\beta_j|} \rbrace
 $$
 
 
 
 $$
-\sigma^2 \;\sim\; \text{Inverse-Gamma}\left( \tfrac{n-1+p}{2},\; \tfrac{R + \beta' T^{-1} \beta}{2} \right) I\{ \sigma^2 < \min_j \beta_j^2 u_j^2 \}
+\sigma^2 \;\sim\; \text{Inverse-Gamma}\left( \tfrac{n-1+p}{2},\; \tfrac{R + \beta' T^{-1} \beta}{2} \right) I\lbrace \sigma^2 < \min_j \beta_j^2 u_j^2 \rbrace
 $$
 
 
